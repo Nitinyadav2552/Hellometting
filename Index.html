@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+      min-height: 100vh;
+      color: white;
+    }
+
+    .container {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px red;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: red;
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input, 
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid red;
+      background: black;
+      color: white;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: darkred;
+    }
+
+    .profile-pic {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .profile-pic img {
+      width: 80px;
+      height: 80px;
+      border-radius: 0%; /* Initial square shape */
+      border: 5px solid black; /* Black border before selecting a photo */
+      box-shadow: 0 0 10px red; /* Glowing red effect */
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s, border-radius 0.3s, border-color 0.3s;
+    }
+
+    .profile-pic img:hover {
+      transform: scale(1.1); /* Slight hover effect */
+      box-shadow: 0 0 20px red; /* Enhanced glow on hover */
+    }
+
+    .profile-pic input[type="file"] {
+      display: none;
+    }
+
+    /* After selecting a photo, change the border to red and shape to circle */
+    .profile-pic img.selected {
+      border-radius: 50%; /* Circle shape after selecting photo */
+      border-color: red; /* Red border after selecting photo */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <br>
+    <h3>Fill This Details</h3>
+    <div class="profile-pic">
+      <img id="profilePic" src="https://via.placeholder.com/80" alt="Profile Picture" onclick="document.getElementById('fileInput').click()">
+      <input type="file" id="fileInput" accept="image/*" onchange="updateProfilePicture(event)">
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+    </div>
+    <div class="form-group">
+      <label for="mobile">Mobile</label>
+      <input type="tel" id="mobile" placeholder="Enter your mobile number" required>
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select id="gender" required>
+        <option value="" disabled selected>Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <button onclick="saveAndRedirect()">Login</button>
+  </div>
+
+  <script>
+    // Update the profile picture preview and change the border and shape
+    function updateProfilePicture(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const profilePic = document.getElementById("profilePic");
+          profilePic.src = e.target.result;
+          profilePic.classList.add("selected"); // Apply selected class for circular shape and red border
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // Save user details and redirect
+    function saveAndRedirect() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
+      const gender = document.getElementById("gender").value;
+      const profilePic = document.getElementById("profilePic").src;
+
+      if (name && email && password && mobile && gender) {
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password);
+        localStorage.setItem("mobile", mobile);
+        localStorage.setItem("gender", gender);
+        localStorage.setItem("profilePic", profilePic);
+
+        window.location.href = "details.html";  // Redirect to details.html
+      } else {
+        alert("Please fill all fields!");
+      }
+    }
+  </script>
+</body>
+</html>

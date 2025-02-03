@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Program</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Default: Black theme */
+            color: #fff; /* Default: White text */
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            text-align: center;
+            color: #ff0000; /* Red title by default */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #ff0000; /* Red labels by default */
+        }
+
+        select, button, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #333;
+            color: #fff;
+        }
+
+        button {
+            background-color: #ff0000;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Settings Program</h2>
+
+        <!-- Theme Selection -->
+        <label for="theme">Choose Theme:</label>
+        <select id="theme">
+            <option value="black">Black Theme</option>
+            <option value="red">Red Theme</option>
+            <option value="blue">Blue Theme</option>
+            <option value="green">Green Theme</option>
+            <option value="purple">Purple Theme</option>
+            <option value="yellow">Yellow Theme</option>
+            <option value="gray">Gray Theme</option>
+        </select>
+
+        <!-- Font Style Selection -->
+        <label for="fontStyle">Choose Font Style:</label>
+        <select id="fontStyle">
+            <option value="Arial">Arial</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+            <option value="Trebuchet MS">Trebuchet MS</option>
+        </select>
+
+        <!-- Apply Button -->
+        <button id="applySettings">Apply Settings</button>
+    </div>
+
+    <script>
+        // Get elements
+        const themeSelect = document.getElementById('theme');
+        const fontStyleSelect = document.getElementById('fontStyle');
+        const applyButton = document.getElementById('applySettings');
+
+        // Load existing settings
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const savedFont = localStorage.getItem('fontStyle');
+
+            if (savedTheme) {
+                themeSelect.value = savedTheme;
+            }
+            if (savedFont) {
+                fontStyleSelect.value = savedFont;
+            }
+        });
+
+        // Apply settings
+        applyButton.addEventListener('click', () => {
+            const selectedTheme = themeSelect.value;
+            const selectedFontStyle = fontStyleSelect.value;
+
+            // Save to localStorage
+            localStorage.setItem('theme', selectedTheme);
+            localStorage.setItem('fontStyle', selectedFontStyle);
+
+            // Redirect to the main page to apply changes
+            window.location.href = 'Indian.html';
+        });
+    </script>
+</body>
+</html>

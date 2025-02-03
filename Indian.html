@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian History</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #111;
+            border-bottom: 1px solid red;
+        }
+
+        .menu-button {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu-button span {
+            display: block;
+            width: 30px;
+            height: 4px;
+            background: red;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            background: #222;
+            border-radius: 5px;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid red;
+        }
+
+        .dropdown a:hover {
+            background: red;
+            color: black;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid red;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            text-shadow: 0 0 10px red;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .king-topic {
+            font-size: 22px;
+            margin-top: 20px;
+            color: red;
+        }
+
+        .king-info {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <div class="menu-button" onclick="toggleDropdown()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="dropdown" id="menuDropdown">
+                <a href="#">Home</a>
+                <a href="settings.html">Settings</a>
+                <a href="javascript:void(0);" onclick="goBack()">Log Out</a>
+            </div>
+        </div>
+        <div class="profile">
+            <img id="profilePic" src="https://via.placeholder.com/40" alt="Profile Picture">
+            <p id="username">Username</p>
+        </div>
+    </header>
+    <main>
+        <h1>Indian Kings and Their Legacy</h1>
+        
+        <!-- King 1: Ashoka the Great -->
+        <div class="king-topic">Ashoka the Great</div>
+        <div class="king-info">
+            Ashoka, the third emperor of the Maurya dynasty, ruled from 268 BCE to 232 BCE. He is best known for his embrace of Buddhism after the bloody Kalinga war. His reign marked a period of prosperity, religious tolerance, and the spread of Buddhism both in India and abroad.
+            <br><br>
+            Ashoka's rock edicts and pillars are testament to his commitment to non-violence and moral governance. His efforts to promote Dhamma (righteousness) are still influential in the teachings of Buddhism today. He established a vast network of hospitals, rest houses, and irrigation systems throughout his empire.
+        </div>
+
+        <!-- King 2: Chandragupta Maurya -->
+        <div class="king-topic">Chandragupta Maurya</div>
+        <div class="king-info">
+            Chandragupta Maurya was the founder of the Maurya Empire in ancient India, reigning from 321 BCE to 297 BCE. He is best known for his role in uniting the Indian subcontinent under a centralized administration.
+            <br><br>
+            Chandragupta's success was greatly aided by his advisor, Chanakya, a brilliant strategist and philosopher. He established a strong administrative framework, which laid the foundation for the Mauryan Empire's future prosperity. His rule also marked the beginning of the use of Persian and Greek influence in the Indian subcontinent.
+        </div>
+
+        <!-- King 3: Samudragupta -->
+        <div class="king-topic">Samudragupta</div>
+        <div class="king-info">
+            Samudragupta, often referred to as the "Napoleon of India," was the greatest ruler of the Gupta Empire. He ruled from 335 CE to 375 CE and is considered one of the most powerful emperors of Indian history.
+            <br><br>
+            His military campaigns expanded the Gupta Empire to its greatest territorial extent, while his support of arts and culture marked a golden age in Indian history. He was also a patron of classical Sanskrit literature and the arts, which flourished during his reign.
+        </div>
+
+        <!-- King 4: Maharana Pratap -->
+        <div class="king-topic">Maharana Pratap</div>
+        <div class="king-info">
+            Maharana Pratap, the Rajput king of Mewar, is remembered for his unyielding resistance against the Mughal Empire, particularly his famous battle at Haldighati in 1576. Though the battle was tactically indecisive, Maharana Pratap's courage and leadership made him a symbol of resistance and honor.
+            <br><br>
+            Despite facing overwhelming odds, Maharana Pratap never submitted to the Mughals and maintained his kingdom's independence. His legacy is celebrated in Rajasthan and across India as an example of bravery and patriotism.
+        </div>
+
+        <!-- King 5: Shivaji Maharaj -->
+        <div class="king-topic">Shivaji Maharaj</div>
+        <div class="king-info">
+            Shivaji Maharaj, the founder of the Maratha Empire in the 17th century, was a visionary leader and military tactician. His reign marked the rise of the Maratha power in India, which played a critical role in resisting Mughal expansion.
+            <br><br>
+            Known for his innovative military strategies, administration, and the establishment of a navy, Shivaji's legacy is immortalized in India as a national hero. His sense of justice, commitment to the welfare of his people, and the protection of religious freedom made him one of the most respected kings in Indian history.
+        </div>
+
+        <!-- King 6: Akbar the Great -->
+        <div class="king-topic">Akbar the Great</div>
+        <div class="king-info">
+            Akbar, the third Mughal emperor, ruled from 1556 to 1605 and is often regarded as one of the greatest rulers in Indian history. His reign is noted for the consolidation of the Mughal Empire and the establishment of a centralized government.
+            <br><br>
+            Akbar's religious tolerance, efforts to integrate Hindus into his administration, and the introduction of the policy of Sulh-i-kul (peace with all) are highlights of his reign. His administrative reforms, including the introduction of the Mansabdari system and the creation of a legal code, were monumental in shaping the future of the empire.
+        </div>
+
+        <!-- King 7: Rajendra Chola I -->
+        <div class="king-topic">Rajendra Chola I</div>
+        <div class="king-info">
+            Rajendra Chola I, the ruler of the Chola dynasty, ascended the throne in 1014 CE and expanded the Chola Empire to its greatest extent. He is remembered for his naval expeditions, which extended the empire's influence to Southeast Asia.
+            <br><br>
+            Under his rule, the Chola dynasty reached its zenith, dominating the Indian Ocean. His administration saw the construction of grand temples and the promotion of Tamil culture and art. The Chola Empire's impact on trade and politics in Southeast Asia is still evident today.
+        </div>
+
+    </main>
+
+    <script>
+        // Toggle dropdown visibility
+        function toggleDropdown() {
+            const dropdown = document.getElementById("menuDropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
+        // Log out and clear saved settings
+        function goBack() {
+            localStorage.clear();
+            window.location.href = "Login.html";
+        }
+
+        // Apply saved settings (theme, font, username, and profile picture)
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const savedFont = localStorage.getItem('fontStyle');
+            const savedUsername = localStorage.getItem('name');
+            const savedProfilePic = localStorage.getItem('profilePic');
+
+            // Apply theme
+            if (savedTheme) {
+                document.body.style.backgroundColor = savedTheme === 'black' ? '#000' :
+                                                       savedTheme === 'red' ? '#8B0000' :
+                                                       savedTheme === 'blue' ? '#1E90FF' :
+                                                       savedTheme === 'green' ? '#228B22' :
+                                                       savedTheme === 'purple' ? '#800080' :
+                                                       savedTheme === 'yellow' ? '#FFD700' :
+                                                       savedTheme === 'gray' ? '#808080' : '#000';
+            }
+
+            // Apply font
+            if (savedFont) {
+                document.body.style.fontFamily = savedFont;
+            }
+
+            // Apply username and profile picture
+            if (savedUsername) {
+                document.getElementById("username").innerText = savedUsername;
+            }
+            if (savedProfilePic) {
+                document.getElementById("profilePic").src = savedProfilePic;
+            }
+        });
+    </script>
+</body>
+</html>
