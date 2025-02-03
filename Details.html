@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 400px;
+      margin: 50px auto;
+      background: #222;
+      border-radius: 10px;
+      box-shadow: 0 0 15px red;
+    }
+
+    h1 {
+      text-align: center;
+      color: red;
+      margin-bottom: 20px;
+    }
+
+    .profile-pic {
+      display: block;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid red;
+      margin: 0 auto 20px;
+    }
+
+    .details {
+      text-align: center;
+    }
+
+    .details p {
+      margin: 10px 0;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: darkred;
+    }
+
+    #usernameInput {
+      display: none;
+      font-size: 14px;
+      border: 1px solid red;
+      border-radius: 5px;
+      padding: 5px;
+      background: #222;
+      color: white;
+    }
+
+    #editButton {
+      background: #444;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Your Profile</h1>
+    <img id="profilePic" class="profile-pic" src="https://via.placeholder.com/100" alt="Profile Picture">
+    <div class="details">
+      <p><strong>Name:</strong> <span id="userName">N/A</span></p>
+      <p><strong>Email:</strong> <span id="userEmail">N/A</span></p>
+      <p><strong>Mobile:</strong> <span id="userMobile">N/A</span></p>
+      <p><strong>Gender:</strong> <span id="userGender">N/A</span></p>
+      <p><strong>Password:</strong> <span id="userPassword">N/A</span></p>
+      <input type="text" id="usernameInput" placeholder="Enter your name" onblur="saveUsername()" onkeypress="checkEnter(event)">
+    </div>
+    <button onclick="goBack()">VERIFY</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Retrieve user details from localStorage
+      const name = localStorage.getItem("name");
+      const email = localStorage.getItem("email");
+      const mobile = localStorage.getItem("mobile");
+      const gender = localStorage.getItem("gender");
+      const password = localStorage.getItem("password");
+      const profilePic = localStorage.getItem("profilePic");
+
+      // Update the profile details on the page
+      document.getElementById("userName").textContent = name || "N/A";
+      document.getElementById("userEmail").textContent = email || "N/A";
+      document.getElementById("userMobile").textContent = mobile || "N/A";
+      document.getElementById("userGender").textContent = gender || "N/A";
+      document.getElementById("userPassword").textContent = password || "N/A";
+
+      // Update the profile picture if available
+      if (profilePic) {
+        document.getElementById("profilePic").src = profilePic;
+      }
+    });
+
+    // Edit username
+    function editUsername() {
+      const username = document.getElementById("userName");
+      const input = document.getElementById("usernameInput");
+      input.value = username.textContent;
+      username.style.display = "none";
+      input.style.display = "block";
+      input.focus();
+      document.getElementById("editButton").style.display = "none";
+    }
+
+    // Save username
+    function saveUsername() {
+      const username = document.getElementById("userName");
+      const input = document.getElementById("usernameInput");
+      if (input.value.trim() !== "") {
+        username.textContent = input.value.trim();
+        localStorage.setItem("name", input.value.trim());
+      }
+      username.style.display = "block";
+      input.style.display = "none";
+      document.getElementById("editButton").style.display = "inline-block";
+    }
+
+    // Save username on pressing Enter
+    function checkEnter(event) {
+      if (event.key === "Enter") {
+        saveUsername();
+      }
+    }
+
+    // Clear user data and redirect to the login page
+    function goBack() {
+      // Keep only the profile picture and username in localStorage
+      const profilePic = localStorage.getItem("profilePic");
+      const name = localStorage.getItem("name");
+      
+      // Clear all data except profile picture and username
+      localStorage.clear();
+      if (profilePic) {
+        localStorage.setItem("profilePic", profilePic);
+      }
+      if (name) {
+        localStorage.setItem("name", name);
+      }
+      
+      // Redirect to the Indian History page
+      window.location.href = "Indian.html";
+    }
+  </script>
+</body>
+</html>
